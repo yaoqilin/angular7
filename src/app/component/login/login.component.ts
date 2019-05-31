@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  submit(): void{debugger;
-    this
+  submit(): void{
+    this.peopleInfo
   }
 }
