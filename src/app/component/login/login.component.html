@@ -4,7 +4,7 @@
   <div class="people_list">
     <ul>
       <li>
-        姓 名：<input type="text" id="username" class="username" [(ngModel)]="peopleInfo.username" />
+        姓 名：<input type="text" id="username" class="username" [(ngModel)]="peopleInfo.username" name="username" />
       </li>
       <li>
         性 别：
@@ -21,7 +21,7 @@
       <li>
         爱 好：
         <span *ngFor="let item of peopleInfo.hobby;let key=index;">
-          <input type="checkbox" [id]="'check'+key" [(ngModel)]="item.checked"><label [for]="'check'+key">{{item.title}}</label>
+          <input type="checkbox" name="'check'+key" [id]="'check'+key" [(ngModel)]="item.checked"><label [for]="'check'+key">{{item.title}}</label>
           &nbsp;&nbsp;
         </span>
       </li>
