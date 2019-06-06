@@ -1,4 +1,4 @@
-import { NgModel } from "@angular/forms";
+import { NgModule } from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {MainComponent} from "./main.component";
 
@@ -9,7 +9,7 @@ const routes: Routes = [
   }
 ];
 
-@NgModel({
+@NgModule({
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
