@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TodoComponent } from './todo/todo.component';
+
 
 @Component({
   selector: 'app-right-control',
@@ -11,5 +13,7 @@ export class RightControlComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  add(title: string) {
+    this.todoList.add(title);
+  }
 }
