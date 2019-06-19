@@ -9,8 +9,10 @@ import { TODOS } from '../local-storage/local-storage.namespace';
 @Injectable()
 export class TodoService {
   todo$ = new Subject<Todo[]>();
+  rank$ = new Subject<RankBy>();
 
   private todos: Todo[] = [];
+  private rank: RankBy = 'title';
 
   constructor(
     private listService: ListService,
@@ -21,6 +23,12 @@ export class TodoService {
 
   private broadCast(): void {
     this.todo$.next(this.todos);
+    this.rank$.next(this.rank);
+  }
+
+  toggleRank(r: RankBy): void {
+    this.rank = r;
+    this.rank$.next(r);
   }
 
   private persist(): void {
