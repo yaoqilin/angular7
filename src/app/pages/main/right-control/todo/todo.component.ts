@@ -12,6 +12,12 @@ import { floorToDate, getTodayTime } from '../../../../../utils/time';
   templateUrl: './todo.component.html',
   styleUrls: [ './todo.component.less' ]
 })
+const rankerGenerator = (type: RankBy = 'title'): any => {
+  if (type === 'completeFlag') {
+    return (t1: Todo, t2: Todo) => t1.completedFlag && !t2.completedFlag;
+  }
+  return (t1: Todo, t2: Todo) => t1[ type ] > t2[ type ];
+};
 export class TodoComponent implements OnInit, OnDestroy {
   private dropdown: NzDropdownContextComponent;
   private destory$ = new Subject();
@@ -47,14 +53,15 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.destory$.next();
   }
 
-  private processTodos(listUUID: string, todos: Todo[]): void {
+  private processTodos(listUUID: string, todos: Todo[], rank: RankBy): void {
     const filteredTodos = todos
       .filter(todo => {
         return ((listUUID === 'today' && todo.planAt && floorToDate(todo.planAt) <= getTodayTime())
           || (listUUID === 'todo' && (!todo.listUUID || todo.listUUID === 'todo'))
           || (listUUID === todo.listUUID));
       })
-      .map(todo => Object.assign({}, todo) as Todo);
+      .map(todo => Object.assign({}, todo) as Todo)
+      .sort(rankerGenerator(rank));
 
     this.todos = [].concat(filteredTodos);
   }
