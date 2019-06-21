@@ -102,4 +102,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   close(): void {
     this.dropdown.close();
   }
+  click(uuid: string): void {
+    this.router.navigateByUrl(`/main/${uuid}`);
+  }
 }
