@@ -17,4 +17,10 @@
       <span *ngIf="!isCollapsed">新列表</span>
     </button>
   </div>
+  <div (click)="goSetting()" class="floating-btn header-btn" *ngIf="!isCollapsed">
+    <i class="anticon anticon-setting"></i>
+  </div>
+  <div (click)="goSummary()" class="floating-btn header-btn" *ngIf="!isCollapsed">
+    <i class="anticon anticon-calendar"></i>
+  </div>
 </div>

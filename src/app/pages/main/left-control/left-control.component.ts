@@ -26,4 +26,11 @@ export class LeftControlComponent implements OnInit {
     // 在 Angular 中调用子组件
     this.listComponent.openAddListModal();
   }
+  goSetting() {
+    this.router.navigateByUrl('/setting');
+  }
+
+  goSummary() {
+    this.router.navigateByUrl('/summary');
+  }
 }

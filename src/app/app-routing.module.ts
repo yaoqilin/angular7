@@ -20,6 +20,10 @@ const routes: Routes = [
     redirectTo:'/setup',
     pathMatch:'full'
   },
+  { path: 'summary',
+    redirectTo: '/summary',
+    pathMatch: 'full'
+  },
   {
     path:'login',
     component:LoginComponent,
